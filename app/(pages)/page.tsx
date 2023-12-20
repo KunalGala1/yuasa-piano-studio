@@ -1,3 +1,9 @@
+'use client';
+import { useState, useEffect } from 'react';
+import { getProfile } from '@/sanity/sanity.query';
+import type { ProfileType } from '@/types';
+import { PortableText } from '@portabletext/react';
+
 import Header from '../components/Header';
 import Image from 'next/image';
 import Button from '../components/Button';
@@ -9,6 +15,25 @@ import Link from 'next/link';
 import Testemonial from '../components/Testemonial';
 
 const HomePage = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [profile, setProfile] = useState<ProfileType | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const profile: ProfileType = await getProfile();
+        setProfile(profile);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setError(error as Error);
+        setLoading(false);
+      }
+    };
+    getData();
+  }, []);
+
   return (
     <main className='space-y-16'>
       {/* Hero */}
@@ -158,7 +183,34 @@ const HomePage = () => {
               unoptimized={true}
             ></Image>
           </div>
-          <div className='md:w-2/3 space-y-8 text-lg'>
+          {loading && <div>Loading...</div>}
+          {error && <div>{error.message}</div>}
+          {profile && (
+            <div className='md:w-2/3 space-y-8 text-lg text-textColor font-light'>
+              <PortableText
+                value={profile.shortBio}
+                components={{
+                  marks: {
+                    link: ({ value, children }) => {
+                      const target = (value?.href || '').startsWith('http')
+                        ? '_blank'
+                        : undefined;
+                      return (
+                        <Link
+                          href={value?.href}
+                          className='text-linkColor'
+                          target={target}
+                        >
+                          {children}
+                        </Link>
+                      );
+                    },
+                  },
+                }}
+              />
+            </div>
+          )}
+          {/* <div className='md:w-2/3 space-y-8 text-lg'>
             <MainText>
               Aya is an award-winning piano teacher with 7 years of professional
               experience in private piano instruction and a Bachelor of Music
@@ -181,7 +233,7 @@ const HomePage = () => {
                 Read More
               </Link>
             </MainText>
-          </div>
+          </div> */}
         </div>
       </section>
 
