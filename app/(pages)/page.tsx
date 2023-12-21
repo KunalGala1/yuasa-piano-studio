@@ -2,7 +2,10 @@
 import { useState, useEffect } from 'react';
 import { getProfile } from '@/sanity/sanity.query';
 import type { ProfileType } from '@/types';
+import { getTestimonials } from '@/sanity/sanity.query';
+import type { TestimonialType } from '@/types';
 import { PortableText } from '@portabletext/react';
+import PortableTextComponent from '../components/PortableTextComponents';
 
 import Header from '../components/Header';
 import Image from 'next/image';
@@ -14,20 +17,28 @@ import LearnMoreList from '../components/LearnMoreList';
 import Link from 'next/link';
 import Testemonial from '../components/Testemonial';
 
+import Loading from './loading';
+
 const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [profile, setProfile] = useState<ProfileType | null>(null);
+  const [testimonials, setTestimonials] = useState<TestimonialType[]>([]);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const profile: ProfileType = await getProfile();
+        const [testimonials, profile] = await Promise.all([
+          getTestimonials(),
+          getProfile(),
+        ]);
         setProfile(profile);
+        setTestimonials(testimonials);
         setLoading(false);
       } catch (error) {
         console.log(error);
         setError(error as Error);
+      } finally {
         setLoading(false);
       }
     };
@@ -67,7 +78,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       {/* Introduction */}
       <section className='p-8'>
         <div className='max-w-2xl mx-auto'>
@@ -82,7 +92,6 @@ const HomePage = () => {
           </MainText>
         </div>
       </section>
-
       {/* Trifold */}
       <section className='p-8 max-w-6xl mx-auto'>
         <div className='flex flex-col md:flex-row justify-center gap-8'>
@@ -125,7 +134,6 @@ const HomePage = () => {
           </TrifoldCard>
         </div>
       </section>
-
       {/* More information for kids or adults */}
       <section className='flex flex-col gap-16 p-8'>
         <LearnMoreCard title={'Piano Lessons for Kids'} link={'/lessons'}>
@@ -169,7 +177,6 @@ const HomePage = () => {
           </LearnMoreList>
         </LearnMoreCard>
       </section>
-
       {/* Short Bio */}
       <section className='bg-linearGradient2 p-8'>
         <div className='flex flex-col-reverse md:flex-row gap-16 max-w-6xl mx-auto'>
@@ -186,84 +193,24 @@ const HomePage = () => {
           {loading && <div>Loading...</div>}
           {error && <div>{error.message}</div>}
           {profile && (
-            <div className='md:w-2/3 space-y-8 text-lg text-textColor font-light'>
+            <div className='md:w-2/3 space-y-8 text-lg'>
               <PortableText
                 value={profile.shortBio}
-                components={{
-                  marks: {
-                    link: ({ value, children }) => {
-                      const target = (value?.href || '').startsWith('http')
-                        ? '_blank'
-                        : undefined;
-                      return (
-                        <Link
-                          href={value?.href}
-                          className='text-linkColor'
-                          target={target}
-                        >
-                          {children}
-                        </Link>
-                      );
-                    },
-                  },
-                }}
+                components={PortableTextComponent}
               />
             </div>
           )}
-          {/* <div className='md:w-2/3 space-y-8 text-lg'>
-            <MainText>
-              Aya is an award-winning piano teacher with 7 years of professional
-              experience in private piano instruction and a Bachelor of Music
-              degree from Berklee College of Music.
-            </MainText>
-            <MainText>
-              Known for her fun, patient and engaging teaching style, she
-              recognizes that everyone is unique, and creates a customized
-              curriculum to best suit the individual needs and interests of each
-              student.{' '}
-            </MainText>
-            <MainText>
-              Lessons are as relaxed or intense as the student wishes, and can
-              include music theory, ear training, composition, music production
-              and more.
-            </MainText>
-            <MainText>
-              Aya is a member of the Music Teachers&apos; National Association.{' '}
-              <Link href={'/about'} className='text-linkColor'>
-                Read More
-              </Link>
-            </MainText>
-          </div> */}
         </div>
       </section>
-
       {/* Testemonials */}
       <section className='p-8 max-w-5xl mx-auto'>
         <div>
-          <Testemonial author={'Basak P., Parent'}>
-            Aya is an amazing teacher. She taught my 5 year old daughter how to
-            play piano with a lot of patience and joy without overwhelming her.
-            Being calm and kind helped my daughter to connect with her easily.
-            She also prepped my daughter for her first recital in a very helpful
-            manner and organized the recital very professionally.
-          </Testemonial>
-          <Testemonial author={'Sydney T., Student'}>
-            Aya is a wonderful piano teacher! She always prepares lessons that
-            are appropriate for my skill level and is patient and encouraging
-            with me when I make mistakes. Aya wants the lessons to be fun and
-            interesting for me so she allows me to pick genres and even specific
-            songs that I want to learn and incorporates them into the lessons.
-            She is very professional and at the same time, friendly and easy to
-            talk to. She clearly loves teaching and is passionate about piano
-            and music in general. I would highly recommend taking piano lessons
-            from Aya!
-          </Testemonial>
-          <Testemonial author={'Maresa C., Parent'}>
-            Aya is amazing! My kids love learning with her and have been
-            improving very quickly. She&apos;s extremely professional and
-            organized, comes perfectly prepared and tailors each lesson
-            individually to my kids&apos; needs
-          </Testemonial>
+          {testimonials &&
+            testimonials.map((testemonial) => (
+              <Testemonial author={testemonial.author} key={testemonial.author}>
+                {testemonial.quote}
+              </Testemonial>
+            ))}
         </div>
       </section>
     </main>
