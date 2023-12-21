@@ -1,3 +1,4 @@
 import profile from './profile';
 import testemonial from './testemonial';
-export const schemaTypes = [profile, testemonial];
+import lessonsInfo from './lessonsInfo';
+export const schemaTypes = [profile, testemonial, lessonsInfo];

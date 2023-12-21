@@ -47,6 +47,44 @@ const profile = {
         },
       ],
     },
+    // Education section
+    {
+      name: 'education',
+      title: 'Education',
+      type: 'object',
+      fields: [
+        {
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+        },
+        {
+          name: 'details',
+          title: 'Details',
+          type: 'array',
+          of: [{ type: 'block' }],
+        },
+      ],
+    },
+    // Teaching section
+    {
+      name: 'teaching',
+      title: 'Teaching',
+      type: 'object',
+      fields: [
+        {
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+        },
+        {
+          name: 'details',
+          title: 'Details',
+          type: 'array',
+          of: [{ type: 'block' }],
+        },
+      ],
+    },
   ],
 };
 

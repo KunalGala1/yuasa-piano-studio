@@ -17,8 +17,6 @@ import LearnMoreList from '../components/LearnMoreList';
 import Link from 'next/link';
 import Testemonial from '../components/Testemonial';
 
-import Loading from './loading';
-
 const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [profile, setProfile] = useState<ProfileType | null>(null);
