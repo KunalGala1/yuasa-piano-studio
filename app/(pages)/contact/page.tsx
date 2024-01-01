@@ -1,5 +1,5 @@
-import Inquiry from '@/app/components/Inquiry';
 import SmallHeading from '@/app/components/SmallHeading';
+import Inquiry from '@/app/components/Inquiry';
 
 const ContactPage = () => {
   return (

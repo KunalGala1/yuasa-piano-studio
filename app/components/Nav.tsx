@@ -32,9 +32,9 @@ const Nav = ({ isOpen, toggleOpen, closeNav }: NavProps) => {
         <NavListItem href={'/rates'} closeNav={closeNav}>
           Rates
         </NavListItem>
-        <NavListItem href={'/blog'} closeNav={closeNav}>
+        {/* <NavListItem href={'/blog'} closeNav={closeNav}>
           Blog
-        </NavListItem>
+        </NavListItem> */}
         <NavListItem href={'/contact'} closeNav={closeNav}>
           Contact
         </NavListItem>
