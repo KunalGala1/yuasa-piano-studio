@@ -26,6 +26,9 @@ const config: Config = {
         ratesTicketColorTwo: 'rgb(178, 198, 231)',
         ratesTicketColorThree: 'rgb(248, 240, 176)',
       },
+      screens: {
+        xs: '450px',
+      },
     },
   },
   plugins: [],

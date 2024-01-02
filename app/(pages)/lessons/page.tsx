@@ -125,7 +125,7 @@ const LessonPage = () => {
                 },
               ]}
             />
-            <MainText className='pt-8'>
+            <MainText className='sm:pt-8'>
               * I accept students as young as 4 y.o.. However, the optimal
               starting age varies widely for each individual child, depending on
               their personality, ability to focus, and mental and physical

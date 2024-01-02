@@ -76,7 +76,7 @@ export default RatesTicket;
 
 const RatesTicketHeading = ({ children }: { children: React.ReactNode }) => {
   return (
-    <h3 className='uppercase bg-main text-white py-1 px-5 mb-4 text-center w-max mx-auto'>
+    <h3 className='uppercase bg-main text-white py-1 px-5 mb-4 text-center w-max mx-auto rounded'>
       {children}
     </h3>
   );

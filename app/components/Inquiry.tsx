@@ -79,7 +79,7 @@ const Inquiry = () => {
       >
         {/* Name */}
         <div className={'flex gap-4'}>
-          <div className='w-1/2 flex flex-col'>
+          <div className='flex flex-col flex-1'>
             <Label htmlFor='firstName'>First Name</Label>
             <input
               {...register('firstName', {
@@ -89,7 +89,7 @@ const Inquiry = () => {
                   message: 'Please only use letters',
                 },
               })}
-              className='border rounded p-3 bg-blue-50/50 hover:border-main'
+              className='border rounded p-3 bg-blue-50/50 hover:border-main w-full'
             />
             {errors['firstName'] && (
               <span className='text-xs text-red-500 mt-1'>
@@ -97,7 +97,7 @@ const Inquiry = () => {
               </span>
             )}
           </div>
-          <div className='w-1/2 flex flex-col'>
+          <div className='flex flex-col flex-1'>
             <Label htmlFor='lastName'>Last Name</Label>
             <input
               {...register('lastName', {
@@ -107,7 +107,7 @@ const Inquiry = () => {
                   message: 'Please only use letters',
                 },
               })}
-              className='border rounded p-3 bg-blue-50/50 hover:border-main'
+              className='border rounded p-3 bg-blue-50/50 hover:border-main w-full'
             />
             {errors['lastName'] && (
               <span className='text-xs text-red-500 mt-1'>
@@ -118,7 +118,7 @@ const Inquiry = () => {
         </div>
         {/* Email and Phone Number */}
         <div className={'flex gap-4'}>
-          <div className='w-1/2 flex flex-col'>
+          <div className='flex flex-col flex-1'>
             <Label htmlFor='email'>Email</Label>
             <input
               {...register('email', {
@@ -128,7 +128,7 @@ const Inquiry = () => {
                   message: 'Please enter a valid email address',
                 },
               })}
-              className='border rounded p-3 bg-blue-50/50 hover:border-main'
+              className='border rounded p-3 bg-blue-50/50 hover:border-main w-full'
             />
             {errors['email'] && (
               <span className='text-xs text-red-500 mt-1'>
@@ -136,7 +136,7 @@ const Inquiry = () => {
               </span>
             )}
           </div>
-          <div className='w-1/2 flex flex-col'>
+          <div className='flex flex-col flex-1'>
             <Label htmlFor='phoneNumber'>Phone Number</Label>
             <input
               {...register('phoneNumber', {
@@ -146,7 +146,7 @@ const Inquiry = () => {
                   message: 'Please enter a valid phone number',
                 },
               })}
-              className='border rounded p-3 bg-blue-50/50 hover:border-main'
+              className='border rounded p-3 bg-blue-50/50 hover:border-main w-full'
             />
             {errors['phoneNumber'] && (
               <span className='text-xs text-red-500 mt-1'>
@@ -155,11 +155,11 @@ const Inquiry = () => {
             )}
           </div>
         </div>
-        <div className='w-full flex flex-col'>
+        <div className='w-full flex flex-col flex-1'>
           <Label htmlFor='addressLine1'>Address Line 1</Label>
           <input
             {...register('addressLine1', { required: true })}
-            className='border rounded p-3 bg-blue-50/50 hover:border-main'
+            className='border rounded p-3 bg-blue-50/50 hover:border-main w-full'
           />
           {errors['addressLine1'] && (
             <span className='text-xs text-red-500 mt-1'>
@@ -167,16 +167,16 @@ const Inquiry = () => {
             </span>
           )}
         </div>
-        <div className='w-full flex flex-col'>
+        <div className='flex flex-col flex-1'>
           <Label htmlFor='addressLine2'>Address Line 2</Label>
           <input
             {...register('addressLine2')}
-            className='border rounded p-3 bg-blue-50/50 hover:border-main'
+            className='border rounded p-3 bg-blue-50/50 hover:border-main w-full'
           />
         </div>
         {/* City State and Zip */}
-        <div className='flex gap-4'>
-          <div className='w-1/3 flex flex-col'>
+        <div className='flex gap-4 flex-wrap xs:flex-nowrap'>
+          <div className='flex flex-col xs:flex-1 w-full'>
             <Label htmlFor='city'>City</Label>
             <input
               {...register('city', {
@@ -186,7 +186,7 @@ const Inquiry = () => {
                   message: 'Please only use letters',
                 },
               })}
-              className='border rounded p-3 bg-blue-50/50 hover:border-main'
+              className='border rounded p-3 bg-blue-50/50 hover:border-main w-full'
             />
             {errors['city'] && (
               <span className='text-xs text-red-500 mt-1'>
@@ -194,7 +194,7 @@ const Inquiry = () => {
               </span>
             )}
           </div>
-          <div className='w-1/3 flex flex-col'>
+          <div className='flex flex-col flex-1'>
             <Label htmlFor='state'>State</Label>
             <input
               {...register('state', {
@@ -204,7 +204,7 @@ const Inquiry = () => {
                   message: 'Please only use letters',
                 },
               })}
-              className='border rounded p-3 bg-blue-50/50 hover:border-main'
+              className='border rounded p-3 bg-blue-50/50 hover:border-main w-full'
             />
             {errors['state'] && (
               <span className='text-xs text-red-500 mt-1'>
@@ -212,7 +212,7 @@ const Inquiry = () => {
               </span>
             )}
           </div>
-          <div className='w-1/3 flex flex-col'>
+          <div className='flex flex-col flex-1'>
             <Label htmlFor='zipCode'>Zip Code</Label>
             <input
               {...register('zipCode', {
@@ -222,7 +222,7 @@ const Inquiry = () => {
                   message: 'Please enter a valid zip code',
                 },
               })}
-              className='border rounded p-3 bg-blue-50/50 hover:border-main'
+              className='border rounded p-3 bg-blue-50/50 hover:border-main w-full'
             />
             {errors['zipCode'] && (
               <span className='text-xs text-red-500 mt-1'>
@@ -233,7 +233,7 @@ const Inquiry = () => {
         </div>
         {/* Student Information */}
         <div className='flex gap-4'>
-          <div className='w-1/2 flex flex-col'>
+          <div className='flex flex-col flex-1'>
             <Label htmlFor='studentName'>Student Name</Label>
             <input
               {...register('studentName', {
@@ -243,7 +243,7 @@ const Inquiry = () => {
                   message: 'Please only use letters',
                 },
               })}
-              className='border rounded p-3 bg-blue-50/50 hover:border-main'
+              className='border rounded p-3 bg-blue-50/50 hover:border-main w-full'
             />
             {errors['studentName'] && (
               <span className='text-xs text-red-500 mt-1'>
@@ -251,7 +251,7 @@ const Inquiry = () => {
               </span>
             )}
           </div>
-          <div className='w-1/2 flex flex-col'>
+          <div className='flex flex-col flex-1'>
             <Label htmlFor='age'>Age</Label>
             <input
               {...register('age', {
@@ -266,7 +266,7 @@ const Inquiry = () => {
                   message: 'Please enter a valid age',
                 },
               })}
-              className='border rounded p-3 bg-blue-50/50 hover:border-main'
+              className='border rounded p-3 bg-blue-50/50 hover:border-main w-full'
             />
             {errors['age'] && (
               <span className='text-xs text-red-500 mt-1'>
@@ -275,13 +275,13 @@ const Inquiry = () => {
             )}
           </div>
         </div>
-        <div className='w-full flex flex-col'>
+        <div className='flex flex-col flex-1'>
           <Label htmlFor='previousMusicExperience'>
             Previous Musical Experience
           </Label>
           <textarea
             {...register('previousMusicExperience')}
-            className='border rounded p-3 bg-blue-50/50 hover:border-main'
+            className='border rounded p-3 bg-blue-50/50 hover:border-main w-full'
             rows={4}
           ></textarea>
         </div>

@@ -44,7 +44,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <main className='space-y-16'>
+    <main className='sm:space-y-16 space-y-4'>
       {/* Hero */}
       <section className='relative w-full h-[500px]'>
         <Image
@@ -53,11 +53,11 @@ const HomePage = () => {
           height={500}
           alt=''
           unoptimized={true}
-          className='absolute top-0 left-0 w-full h-full object-cover object-left sm:translate-x-[25%]'
+          className='absolute top-0 left-0 w-full h-full object-cover sm:object-left object-[25%] sm:translate-x-[25%]'
         ></Image>
         <div className='bg-linearGradient w-full h-full absolute top-0 left-0'></div>
         {/* TEXT CONTENT */}
-        <div className='w-4/5 h-full relative text-white flex flex-col justify-center items-start gap-16 pl-8 max-w-3xl mx-auto'>
+        <div className='w-4/5 h-full relative text-white flex flex-col justify-center items-start gap-16 sm:pl-8 max-w-3xl mx-auto'>
           <div>
             <h1 className='font-bold text-2xl sm:text-3xl md:text-4xl drop-shadow'>
               PIANO LESSONS IN NYC
