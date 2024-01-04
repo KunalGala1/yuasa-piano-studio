@@ -29,6 +29,34 @@ const config: Config = {
       screens: {
         xs: '450px',
       },
+      keyframes: {
+        wiggle: {
+          '0%': { transform: 'rotate(0deg)' },
+          '25%, 75%': { transform: 'rotate(-15deg)' },
+          '50%': { transform: 'rotate(15deg)' },
+          '100%': { transform: 'rotate(0deg)' },
+        },
+        shake: {
+          '0%': { transform: 'translateX(0)' },
+          '25%': {
+            transform: 'translateX(-6px)',
+          },
+          '50%': {
+            transform: 'translateX(6px)',
+          },
+          '75%': { transform: 'translateX(-3px)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        throb: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.1)' },
+        },
+      },
+      animation: {
+        wiggle: 'wiggle 500ms ease-in-out',
+        shake: 'shake 500ms ease-in-out',
+        throb: 'throb 500ms ease-in-out',
+      },
     },
   },
   plugins: [],

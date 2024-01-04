@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import { getLessonsInfo } from '@/sanity/sanity.query';
 import { LessonsInfoType } from '@/types';
 import { PortableText } from '@portabletext/react';
@@ -12,12 +13,30 @@ import Link from 'next/link';
 import Dropdown from '@/app/components/Dropdown';
 
 const LessonPage = () => {
+  const params = useParams();
+
   const [lessonsInfo, setLessonsInfo] = useState<LessonsInfoType | null>(null);
   useEffect(() => {
     getLessonsInfo().then((data) => {
       setLessonsInfo(data);
     });
   }, []);
+
+  useEffect(() => {
+    console.log('I ran');
+    // Extract the hash from the URL
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.getElementById(hash);
+      if (element) {
+        // Scroll to the element
+        window.scrollTo({
+          top: element.offsetTop,
+          behavior: 'smooth', // Optional: adds an animation
+        });
+      }
+    }
+  }, [params]); // Re-run the effect when the path changes
 
   return (
     <>
@@ -72,7 +91,9 @@ const LessonPage = () => {
               ></PortableText>
             </div>
           </main>
-          <PageHeader>{lessonsInfo.pianoLessonsKids.title}</PageHeader>
+          <PageHeader id='#piano-lessons-for-kids'>
+            {lessonsInfo.pianoLessonsKids.title}
+          </PageHeader>
           <section className='p-8 max-w-6xl mx-auto space-y-8'>
             <div className='text-center'>
               <SmallHeading>What&apos;s Included</SmallHeading>
@@ -132,13 +153,15 @@ const LessonPage = () => {
               maturity. If they know their ABCs, can concentrate for 30 minutes,
               enjoy music and are interested in the piano, then they are
               probably ready! Book an{' '}
-              <Link href={'#'} className='text-linkColor'>
+              <Link href={'/contact'} className='text-linkColor'>
                 introductory lesson
               </Link>{' '}
               or contact me for more information.
             </MainText>
           </section>
-          <PageHeader>{lessonsInfo.pianoLessonsAdults.title}</PageHeader>
+          <PageHeader id='#piano-lessons-for-adults'>
+            {lessonsInfo.pianoLessonsAdults.title}
+          </PageHeader>
           <section className='p-8 max-w-6xl mx-auto space-y-8'>
             <div className='text-center'>
               <SmallHeading>What&apos;s Included</SmallHeading>

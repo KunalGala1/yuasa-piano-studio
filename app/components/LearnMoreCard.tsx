@@ -13,7 +13,7 @@ const LearnMoreCard = ({ title, link, children }: LearnMoreCardProps) => {
       <SmallHeading>{title}</SmallHeading>
       <div className='bg-slate-100 p-8 flex flex-col gap-8'>
         {children}
-        <LearnMoreButton>Learn More</LearnMoreButton>
+        <LearnMoreButton link={link}>Learn More</LearnMoreButton>
       </div>
     </div>
   );

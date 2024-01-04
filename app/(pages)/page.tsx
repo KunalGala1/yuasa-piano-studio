@@ -82,11 +82,26 @@ const HomePage = () => {
           <MainText>
             Welcome to the Yuasa Piano Studio website! I offer in-home piano
             lessons in Queens and Brooklyn, as well as at{' '}
-            <span className='text-linkColor'>The Music Room</span> in Prospect
-            Slope. Read my{' '}
-            <span className='text-linkColor'>teaching philosophy</span>, visit
-            the rates page, or schedule a trial lesson. I look forward to
-            hearing from you!
+            <Link
+              href='https://themusicroom.club/aya-yuasa'
+              target='_blank'
+              className='text-linkColor'
+            >
+              The Music Room
+            </Link>{' '}
+            in Prospect Slope. Read my{' '}
+            <Link href='/lessons' className='text-linkColor'>
+              teaching philosophy
+            </Link>
+            , visit the{' '}
+            <Link href='/rates' className='text-linkColor'>
+              rates page
+            </Link>
+            , or schedule a{' '}
+            <Link href='/contact' className='text-linkColor'>
+              trial lesson
+            </Link>
+            . I look forward to hearing from you!
           </MainText>
         </div>
       </section>
@@ -101,6 +116,7 @@ const HomePage = () => {
               alt: 'piano logo',
             }}
             title='Fun Repertoire'
+            animation='hover:animate-wiggle'
           >
             Lessons include pop, rock, blues, folk, jazz, movie and video game
             music, while developing keyboard fluency through standard classical
@@ -114,6 +130,7 @@ const HomePage = () => {
               alt: 'house logo',
             }}
             title='In-Home Lessons'
+            animation='hover:animate-shake'
           >
             Lessons take place in the comfort and convenience of your own home.
           </TrifoldCard>
@@ -125,16 +142,23 @@ const HomePage = () => {
               alt: 'trial logo',
             }}
             title='Free Trial'
+            animation='hover:animate-throb'
           >
             All prospective students receive a free 30 minute trial lesson.
-            Visit the <span className='text-linkColor'>Contact page</span> to
-            learn more and sign-up!
+            Visit the{' '}
+            <Link href={'/contact'} className='text-linkColor'>
+              Contact page
+            </Link>{' '}
+            to learn more and sign-up!
           </TrifoldCard>
         </div>
       </section>
       {/* More information for kids or adults */}
       <section className='flex flex-col gap-16 p-8'>
-        <LearnMoreCard title={'Piano Lessons for Kids'} link={'/lessons'}>
+        <LearnMoreCard
+          title={'Piano Lessons for Kids'}
+          link={'/lessons#piano-lessons-for-kids'}
+        >
           <LearnMoreList>
             <li>
               Weekly 30, 45 or 60 minute lessons in the comfort and convenience
@@ -154,7 +178,10 @@ const HomePage = () => {
             </li>
           </LearnMoreList>
         </LearnMoreCard>
-        <LearnMoreCard title={'Piano Lessons for Adults'} link={'/lessons'}>
+        <LearnMoreCard
+          title={'Piano Lessons for Adults'}
+          link={'/lessons#piano-lessons-for-adults'}
+        >
           <LearnMoreList>
             <li>
               Weekly 45 or 60 minute lessons in the comfort and convenience of

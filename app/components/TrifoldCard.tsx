@@ -11,9 +11,15 @@ type TrifoldCardProps = {
     alt: string;
   };
   children: React.ReactNode;
+  animation: string;
 };
 
-const TrifoldCard = ({ title, image, children }: TrifoldCardProps) => {
+const TrifoldCard = ({
+  title,
+  image,
+  children,
+  animation,
+}: TrifoldCardProps) => {
   return (
     <div className='flex flex-col justify-start items-center gap-2 md:w-1/3 max-w-md mx-auto'>
       <Image
@@ -22,6 +28,7 @@ const TrifoldCard = ({ title, image, children }: TrifoldCardProps) => {
         width={image.width}
         alt={image.alt}
         unoptimized={true}
+        className={`${animation}`}
       ></Image>
       <SmallHeading color='text-main'>{title}</SmallHeading>
       <MainText className='text-center'>{children}</MainText>
