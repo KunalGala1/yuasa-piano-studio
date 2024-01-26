@@ -1,4 +1,14 @@
-import * as React from 'react';
+import * as React from "react";
+import {
+  Html,
+  Body,
+  Container,
+  Heading,
+  Hr,
+  Text,
+  Link,
+} from "@react-email/components";
+import { Tailwind } from "@react-email/tailwind";
 
 interface ConfirmationEmailProps {
   firstName: string;
@@ -29,59 +39,75 @@ export const ConfirmationEmail: React.FC<Readonly<ConfirmationEmailProps>> = ({
   age,
   previousMusicExperience,
 }) => (
-  <div>
-    <p>
-      Thank you for contacting the Yuasa Piano Studio! I will be in touch
-      shortly.
-    </p>
-    <p>You can also reply to this email to get in touch.</p>
-    <p>Here is a record of your inquiry:</p>
-    <p>
-      Name:{' '}
-      <strong>
-        {firstName} {lastName}
-      </strong>
-    </p>
-    <p>
-      Email: <strong>{email}</strong>
-    </p>
-    <p>
-      Phone: <strong>{phoneNumber}</strong>
-    </p>
-    <hr />
-    <p>
-      <strong>Address:</strong>
-    </p>
-    <p>
-      Address Line 1: <strong>{addressLine1}</strong>
-    </p>
-    <p>
-      Address Line 2: <strong>{addressLine2}</strong>
-    </p>
-    <p>
-      City: <strong>{city}</strong>
-    </p>
-    <p>
-      State: <strong>{state}</strong>
-    </p>
-    <p>
-      Zip Code: <strong>{zipCode}</strong>
-    </p>
-    <hr />
-    <p>
-      <strong>Student Information:</strong>
-    </p>
-    <p>
-      Name: <strong>{studentName}</strong>
-    </p>
-    <p>
-      Age: <strong>{age}</strong>
-    </p>
-    <p>
-      <strong>Previous Musical Experience</strong>
-    </p>
-    <p>{previousMusicExperience}</p>
-  </div>
+  <Html lang="en">
+    <Tailwind>
+      <Body className="bg-slate-100 m-auto font-serif p-2 text-slate-900">
+        <Container className="border border-slate-200 rounded my-16 mx-auto p-5 max-w-[465px]">
+          <Heading className="font-bold text-lg text-center my-7">
+            Yuasa Piano Studio
+          </Heading>
+
+          <Text>
+            Thank you for contacting the{" "}
+            <Link href="https://yuasapianostudio.com/" target="_blank">
+              Yuasa Piano Studio
+            </Link>
+            ! I will be in touch shortly. You can also reply to this email to
+            get in touch.
+          </Text>
+          <Text>Here is a record of your inquiry:</Text>
+          <Hr className="border border-solid border-[#eaeaeac] my-[26px] mx-0 w-full" />
+
+          <Text>
+            Name:{" "}
+            <strong>
+              {firstName} {lastName}
+            </strong>
+          </Text>
+          <Text>
+            Email: <strong>{email}</strong>
+          </Text>
+          <Text>
+            Phone: <strong>{phoneNumber}</strong>
+          </Text>
+          <Hr className="border border-solid border-[#eaeaeac] my-[26px] mx-0 w-full" />
+
+          <Text>
+            <strong>Address:</strong>
+          </Text>
+          <Text>
+            Address Line 1: <strong>{addressLine1}</strong>
+          </Text>
+          <Text>
+            Address Line 2: <strong>{addressLine2}</strong>
+          </Text>
+          <Text>
+            City: <strong>{city}</strong>
+          </Text>
+          <Text>
+            State: <strong>{state}</strong>
+          </Text>
+          <Text>
+            Zip Code: <strong>{zipCode}</strong>
+          </Text>
+
+          <Hr className="border border-solid border-[#eaeaeac] my-[26px] mx-0 w-full" />
+
+          <Text>Student Information</Text>
+          <Text>
+            Name: <strong>{studentName}</strong>
+          </Text>
+          <Text>
+            Age: <strong>{age}</strong>
+          </Text>
+          <Text>Previous Musical Experience</Text>
+          <Text className="p-4 bg-slate-300 rounded shadow">
+            {previousMusicExperience}
+          </Text>
+        </Container>
+      </Body>
+    </Tailwind>
+  </Html>
 );
 
 export default ConfirmationEmail;
