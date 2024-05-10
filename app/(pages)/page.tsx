@@ -46,7 +46,7 @@ const HomePage = () => {
   return (
     <main className="sm:space-y-16 space-y-4">
       {/* Hero */}
-      <section className="relative w-full h-[500px] sm:pl-8">
+      <section className="relative w-full h-[500px] p-8">
         <Image
           src={"/hero.jpg"}
           width={500}
