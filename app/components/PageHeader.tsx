@@ -3,17 +3,17 @@ type PageHeaderProps = {
   id?: string;
 };
 
-const PageHeader = ({ children, id = '' }: PageHeaderProps) => {
+const PageHeader = ({ children, id = "" }: PageHeaderProps) => {
   return (
     <div
-      className='flex justify-center items-center gap-4 p-4 max-w-5xl mx-auto mt-8'
+      className="flex justify-center items-center gap-4 max-w-6xl mx-auto mt-8"
       id={id}
     >
-      <div className='h-px w-full bg-sky-950 hidden xs:block'></div>
-      <h1 className='font-sans font-bold text-4xl uppercase text-sky-950 sm:whitespace-nowrap w-full text-center'>
+      <div className="h-px w-full bg-sky-950 hidden xs:block"></div>
+      <h1 className="font-sans font-bold text-4xl uppercase text-sky-950 sm:whitespace-nowrap w-full text-center">
         {children}
       </h1>
-      <div className='h-px w-full bg-sky-950 hidden xs:block'></div>
+      <div className="h-px w-full bg-sky-950 hidden xs:block"></div>
     </div>
   );
 };

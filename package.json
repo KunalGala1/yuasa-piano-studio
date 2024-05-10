@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ssh": "ssh ec2-user@3.143.254.236"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",

@@ -1,4 +1,4 @@
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 const LearnMoreButton = ({
   children,
@@ -14,7 +14,7 @@ const LearnMoreButton = ({
       onClick={() => {
         router.push(link);
       }}
-      className='py-2 px-6 rounded-full bg-light w-max self-center hover:bg-slate-400/75 transition'
+      className="text-base py-2 px-6 rounded-full bg-light w-max self-center hover:bg-slate-400/75 transition"
     >
       {children}
     </button>

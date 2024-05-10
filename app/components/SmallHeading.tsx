@@ -5,7 +5,7 @@ type SmallHeadingProps = {
 
 const SmallHeading = ({ color, children }: SmallHeadingProps) => {
   return (
-    <h3 className={`${color ? color : 'text-headingColor'}`}>{children}</h3>
+    <h3 className={`${color ? color : "text-headingColor"}`}>{children}</h3>
   );
 };
 export default SmallHeading;
